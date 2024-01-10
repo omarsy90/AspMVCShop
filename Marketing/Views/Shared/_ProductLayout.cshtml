@@ -1,0 +1,16 @@
+﻿@model Marketing.Models.Product 
+
+
+<div class="col-sm-12 col-md-6 col-lg-4">
+
+
+  <div class="card" style="margin-bottom:20px" >
+    <img  height="400" src="/@Model.ImgUrl" class="card-img-top" alt="...">
+       <div class="card-body">
+          <h5 class="card-title">@Model.ProductName</h5>
+          <p class="card-text">@Model.ProductPrise</p>
+          <a href="~/Home/@Model.ID" class="btn btn-primary">Details</a>
+       </div>
+        <button type="button" class="btn btn-success addingToShopingCardbtn" id="@Model.ID" onclick="AddToCrad(event)">add to Shoping Card</button>
+   </div>
+</div>

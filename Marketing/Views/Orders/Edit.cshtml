@@ -1,0 +1,68 @@
+﻿@model Marketing.Models.Order
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrderId" />
+            <div class="form-group">
+                <label asp-for="Total" class="control-label"></label>
+                <input asp-for="Total" class="form-control" value="@Model.Total" disabled />
+                <span asp-validation-for="Total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.Email" class="control-label"></label>
+                <input asp-for="Customer.Email"  class="form-control" value="@Model.Customer.Email" disabled />
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="statusDeleviring" class="control-label"></label>
+                
+                <select class="form-control" name="orderstatus">
+                    @foreach (var item in ViewBag.Status)
+                    {
+                        int st = (Int32)item;
+                        if(item == Model.statusDeleviring)
+                        {
+                            <option value="@st" selected>@item.ToString()</option>
+                        }
+                        else
+                        {
+                            <option value="@st">@item.ToString()</option>
+                            
+                        }
+
+                    }
+
+                </select>
+
+                <span asp-validation-for="statusDeleviring" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timestamp" class="control-label"></label>
+                <input asp-for="Timestamp" class="form-control" disabled />
+                <span asp-validation-for="Timestamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

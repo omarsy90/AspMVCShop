@@ -1,0 +1,50 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+
+<!-- -->
+.shopingItemsdiv {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+
+
+
+ .shopingcard-checkoutdiv{
+     
+     height:100px;
+
+
+    }
+
+.shopingcard-checkoutdiv h4{
+
+    margin-left:10%;
+}
+
+    .shopingcard-checkoutdiv button {
+        width: 80%;
+        margin-left: 10%;
+        background-color: green;
+        height:50px;
+    }
+
+

@@ -1,0 +1,25 @@
+﻿@model Marketing.Models.Product
+
+<div  class="row" style="display:flex; justify-content:center" >
+
+
+<div class="col-sm-12 col-md-6 col-lg-6">
+
+
+    <div class="card" style="margin-bottom:20px">
+        <img height="300" src="/@Model.ImgUrl" class="card-img-top" alt="..." >
+        <div class="card-body">
+            <h5 class="card-title">@Model.ProductName</h5>
+            <h6 class="card-title">@Model.ProductCategory?.CategoryName</h6>
+            <p class="card-text">@Model.ProductPrise</p>
+            <p class="card-text">@Model.ProductDescription</p>
+            <a href="~/Home/" class="btn btn-primary">back to the list</a>
+        </div>
+        <button type="button" class="btn btn-success addingToShopingCardbtn" id="@Model.ID" onclick="AddToCrad(event)">add to Shoping Card</button>
+    </div>
+</div>
+</div>
+@section Scripts{
+   @*to load the resposible script that add items to shoping card :)*@
+    <script src="@Url.Content("~/js/HomeIndexView.js")"></script>
+}

@@ -1,0 +1,37 @@
+﻿
+@model IEnumerable<Marketing.Models.ViewModelSchpingCardItem>
+
+
+
+    <div class="shopingItemsDiv">
+@foreach (ViewModelSchpingCardItem item in Model)
+{
+    <partial name="_ShopingCardItem" model="@item" />
+}
+
+   </div>
+
+   <div  class="shopingcard-checkoutdiv">
+
+
+    <form asp-action="CreatCheckoutSession" asp-controller="ShopingCard" method="post">
+
+     
+    <h4> total:  <span class="label label-default" id="total">@ViewBag.Total</span></h4>
+       
+       <button type="submit" id="checkout">checkout</button>
+
+    </form>
+
+    </div>
+
+    
+  
+
+@section Scripts
+    {
+            <script src="@Url.Content("~/js/Shopingcard.js")"></script>
+
+
+            
+    }

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ViewModelOrderDetail>
+
+
+<div class="order-details-header">
+
+    <div></div>
+    <div> <span> price </span></div>
+    <div> <span> quntity </span></div>
+    <div> <span> total price </span></div>
+</div>
+
+@foreach(ViewModelOrderDetail detail in Model)
+{
+    
+
+    <div class="order-details-product">
+
+        <div class="product-img"> <img src="@detail.ProductImg" /> </div>
+        <div class="product-price">  @detail.UnitPrice </div>
+        <div class="product-quantity"> @detail.Quntity </div>
+        <div class="product-total">@detail.Totalprice</div>
+
+    </div>
+ 
+
+}
+
+
+
+

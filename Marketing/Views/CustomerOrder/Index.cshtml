@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<ViewModelOrder>
+
+@section Styles{
+    <link href="~/css/OrdnerStyle.css" type="text/css" rel="stylesheet" />
+}
+
+
+
+
+
+  @await Html.PartialAsync("_OrderLayout",Model)

@@ -1,0 +1,13 @@
+﻿
+@model IEnumerable<Category> 
+
+<div class="card" style="margin-right:10px">
+             <ul class="list-group list-group-flush">
+        @foreach (Category ct in Model)
+        {
+            <li class="list-group-item mycategory" id="@ct.ID" style="cursor:pointer" onclick="GetProductsByCategoryId(event)">@ct.CategoryName</li>
+        }
+
+        <li class="list-group-item mycategory" id="-1" style="cursor:pointer" onclick="GetProductsByCategoryId(event)">all</li>
+            </ul>
+  </div>

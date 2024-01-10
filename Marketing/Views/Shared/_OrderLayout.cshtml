@@ -1,0 +1,144 @@
+﻿
+@model IEnumerable<ViewModelOrder>
+
+<div class="container">
+    <div class="wrapper row">
+
+@foreach(ViewModelOrder order in Model)
+{
+
+    Int32 width = (Int32)order.StatusDeleviring + 1;
+    string formatedWidth = (width * 25) + "%";
+
+
+    
+
+            <div class="order col-sm-12 col-md-10 col-lg-10" id="1">
+
+                <div>
+
+                    <label>id :</label>
+                    <label>@order.OrderID</label>
+
+                </div>
+
+
+                
+
+                <div>
+
+                    <label>Date:</label>
+                    <label>@order.Timestamp</label>
+
+                </div>
+
+                <div class="state">
+
+                    <div class="straight">
+                   
+                        <div class="inner-straight" style="width:@formatedWidth"   ></div>
+                    </div>
+
+                    <div class="dilivering-stage">
+                        <div> </div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+
+                <button class="showbtn btn" id="show-btn"></button>
+                <button class="hidebtn btn" id="hide-btn"></button>
+
+                <div class="order-details">
+
+
+                    @await  Html.PartialAsync("_OrderDetailLayout",order.DetailsInfo)
+
+                    <div class="order-details-total"> total : @order.Total </div>
+                   
+                </div>
+
+            </div>
+
+
+}
+
+    </div>
+</div>
+
+<script>
+
+
+    const showBtns = document.querySelectorAll(".showbtn");
+    const hideBtns = document.querySelectorAll(".hidebtn");
+
+    for (let i = 0; i < showBtns.length; i++) {
+        // add event listner for all show and hide buttons
+        let showBtn = showBtns[i];
+        let hideBtn = hideBtns[i]
+        showBtn.addEventListener('click', (event) => {
+
+            let detailsDiv = showBtn.parentNode.querySelector(".order-details");
+
+            detailsDiv.style.animationName = "DownAnimation";
+            detailsDiv.style.animationDuration = "0.5s";
+            detailsDiv.style.animationTimingFunction = "easy";
+            detailsDiv.style.animationFillMode = "forwards";
+
+            showBtn.style.visibility = "hidden";
+            hideBtn.style.visibility = "visible";
+
+
+
+
+            //getting the current order details div
+
+            let height = detailsDiv.offsetHeight;
+
+            if (showBtn.parentNode.nextElementSibling !== null)
+            {
+                showBtn.parentNode.nextElementSibling.style.marginTop = `${height + 140}px`;
+            }else{
+
+                showBtn.parentNode.style.marginBottom=500+"px";
+            }
+            
+
+
+           
+            
+           
+
+        });
+
+
+        hideBtn.addEventListener('click', (event) => {
+
+            let detailsDiv = showBtn.parentNode.querySelector(".order-details");
+            detailsDiv.style.animationFillMode = "backwards";
+            showBtn.style.visibility = "visible";
+            hideBtn.style.visibility = "hidden";
+
+
+            //getting the current order details div
+
+            let height = detailsDiv.offsetHeight;
+            if(showBtn.parentNode.nextElementSibling !=null)
+            {
+                showBtn.parentNode.nextElementSibling.style.marginTop = "10px";
+
+            }
+            
+        });
+
+    }
+
+
+</script>
+
+
+
+
+
+

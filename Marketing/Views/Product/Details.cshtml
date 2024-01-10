@@ -1,0 +1,49 @@
+﻿
+@model Marketing.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model =>Model.ProductName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.ProductName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.ProductPrise)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.ProductPrise)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.ProductDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.ProductDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.ImgUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <img  src="~/@Model.ImgUrl" height="200"  />
+        </dd>
+        <dt class="col-sm-2">
+            <label>category name :</label>
+        </dt>
+        <dd  class="col-sm-10">
+            <label> @ViewBag.CategoryName</label>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a href="~/Product/Edit/@Model.ID">Edit</a> |
+    <a href="~/Product/">Back to List</a>
+</div>

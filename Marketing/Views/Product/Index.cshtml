@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<Product>
+
+
+
+<h1>Index</h1>
+
+<p>
+    
+</p>
+<table class="table">
+    <thead>
+       
+        <tr>
+            <th>
+                <label> Product Name</label>
+            </th>
+            <th>
+                <label>Product Price</label>
+            </th>
+            <th>
+               <label>Product discription</label>
+            </th>
+            <th>
+                 <label>Image</label>
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var product in Model) {
+        <tr>
+            <td>
+                    <label> @product.ProductName</label>
+            </td>
+            <td>
+                    <label> @product.ProductPrise</label>
+            </td>
+            <td>
+                    <label> @product.ProductDescription</label>
+            </td>
+            <td>
+                    <img  src="~/@product.ImgUrl" height="200px"/>
+            </td>
+            <td>
+                <a   href="~/Product/Edit/@product.ID">Edit</a> |
+                <a   href="~/Product/Details/@product.ID" >Details</a> |
+                <a  href="~/Product/Delete/@product.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

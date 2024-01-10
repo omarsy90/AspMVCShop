@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Marketing.Areas.Identity.Data
+@using Microsoft.AspNetCore.Http;
+
+
+
+@inject IHttpContextAccessor Accessor
+@inject ICustomerRepository CustomerRepository
+@inject SignInManager<MarketingUser> SignInManager
+@inject UserManager<MarketingUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+    {
+        var fullname = string.Empty;
+        if (Accessor.HttpContext.User != null)
+        {
+            if (Accessor.HttpContext.User.IsInRole("admin"))
+            {
+                //admin role
+
+                fullname = UserManager.GetUserName(Accessor.HttpContext.User);
+            }
+            else
+            {
+                // default role
+                fullname = CustomerRepository.GetCustomerById(UserManager.GetUserId(Accessor.HttpContext.User)).CustomerFullName;
+            }
+
+        }
+            
+
+        
+        <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-controller="Account" asp-action="Login"  title="Manage">@fullname</a>
+    </li>
+    <li class="nav-item">
+            <a id="logoutForm" class="nav-link text-dark" asp-controller="Account" asp-action="Logout"> logout </a>
+           
+        
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="register" href="~/account/register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-controller="Account" asp-action="Login" >Login</a>
+    </li>
+}
+</ul>
